@@ -1,0 +1,283 @@
+{
+  "version": 1,
+  "relation_vocabulary": [
+    "supports",
+    "contradicts",
+    "extends",
+    "supersedes",
+    "duplicates"
+  ],
+  "reading_status": ["unread", "reading", "read", "filed"],
+  "proposal_status": ["proposed", "approved", "rejected"],
+  "maturity": ["developing", "recurring"],
+  "claim_status": ["active", "contested", "superseded"],
+  "recurring_principle_min_evidence_for": 3,
+  "date_fields": [
+    "date",
+    "date_posted",
+    "date_captured",
+    "last_shown",
+    "review_date",
+    "covers_from",
+    "covers_to"
+  ],
+  "id_pattern": "^[a-z0-9][a-z0-9-]*$",
+  "writeback_wiki_prefixes": [
+    "wiki/principles/",
+    "wiki/theses/",
+    "wiki/companies/",
+    "wiki/sectors/",
+    "wiki/playbooks/",
+    "wiki/glossary/"
+  ],
+  "types": {
+    "source": {
+      "placement": "raw/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "source",
+        "author",
+        "date_posted",
+        "date_captured",
+        "link",
+        "post_id",
+        "synthetic"
+      ],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {},
+      "body_headings": []
+    },
+    "library": {
+      "placement": "library/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "source",
+        "author",
+        "date_posted",
+        "date_captured",
+        "link",
+        "post_id",
+        "claim",
+        "specifics",
+        "category",
+        "tags",
+        "context",
+        "reading_status",
+        "source_stub",
+        "synthetic"
+      ],
+      "optional": ["claim_status", "superseded_by"],
+      "lists": {
+        "specifics": {"min": 1},
+        "tags": {"min": 1}
+      },
+      "enums": {
+        "reading_status": "reading_status",
+        "claim_status": "claim_status"
+      },
+      "refs": {
+        "source_stub": {"kind": "path", "expect_type": "source"},
+        "superseded_by": {"kind": "id", "expect_type": "library"}
+      },
+      "body_headings": []
+    },
+    "relation": {
+      "placement": "library/relations/",
+      "required": ["id", "type", "relation", "from", "to", "note", "synthetic"],
+      "optional": [],
+      "lists": {},
+      "enums": {"relation": "relation_vocabulary"},
+      "refs": {
+        "from": {"kind": "id", "expect_type": "library"},
+        "to": {"kind": "id", "expect_type": "library"}
+      },
+      "body_headings": []
+    },
+    "principle": {
+      "placement": "wiki/principles/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "thesis",
+        "conviction",
+        "evidence_for",
+        "evidence_against",
+        "current_belief",
+        "recall_question",
+        "recall_answer",
+        "last_shown",
+        "maturity",
+        "synthetic"
+      ],
+      "optional": [],
+      "lists": {
+        "evidence_for": {"min": 1},
+        "evidence_against": {"min": 0}
+      },
+      "enums": {"maturity": "maturity"},
+      "refs": {
+        "evidence_for": {"kind": "id_list", "expect_type": "library"},
+        "evidence_against": {"kind": "id_list", "expect_type": "library"}
+      },
+      "body_headings": []
+    },
+    "thesis": {
+      "placement": "wiki/theses/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "thesis",
+        "conviction",
+        "current_belief",
+        "linked_principles",
+        "synthetic"
+      ],
+      "optional": [],
+      "lists": {"linked_principles": {"min": 1}},
+      "enums": {},
+      "refs": {
+        "linked_principles": {"kind": "id_list", "expect_type": "principle"}
+      },
+      "body_headings": []
+    },
+    "company": {
+      "placement": "wiki/companies/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "company",
+        "current_belief",
+        "conviction",
+        "synthetic"
+      ],
+      "optional": ["last_writeback"],
+      "lists": {},
+      "enums": {},
+      "refs": {
+        "last_writeback": {"kind": "id", "expect_type": "changelog"}
+      },
+      "body_headings": []
+    },
+    "sector": {
+      "placement": "wiki/sectors/",
+      "required": ["id", "type", "title", "summary", "synthetic"],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {},
+      "body_headings": []
+    },
+    "playbook": {
+      "placement": "wiki/playbooks/",
+      "required": ["id", "type", "title", "summary", "synthetic"],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {},
+      "body_headings": []
+    },
+    "glossary": {
+      "placement": "wiki/glossary/",
+      "required": ["id", "type", "title", "term", "summary", "synthetic"],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {},
+      "body_headings": []
+    },
+    "journal": {
+      "placement": "wiki/journal/",
+      "required": ["id", "type", "title", "date", "append_only", "synthetic"],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {},
+      "body_headings": [],
+      "filename_date_field": "date",
+      "require_true": ["append_only"]
+    },
+    "memo": {
+      "placement": "output/memos/",
+      "required": ["id", "type", "title", "date", "cites", "synthetic"],
+      "optional": [],
+      "lists": {"cites": {"min": 1}},
+      "enums": {},
+      "refs": {"cites": {"kind": "id_list", "expect_type": "library"}},
+      "body_headings": ["## Sources", "## Inference"]
+    },
+    "digest": {
+      "placement": "output/digests/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "date",
+        "covers_from",
+        "covers_to",
+        "synthetic"
+      ],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {},
+      "body_headings": []
+    },
+    "review": {
+      "placement": "output/reviews/",
+      "required": ["id", "type", "title", "date", "subject", "synthetic"],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {"subject": {"kind": "id", "expect_type": "principle"}},
+      "body_headings": []
+    },
+    "writeback_proposal": {
+      "placement": "proposals/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "date",
+        "target",
+        "status",
+        "proposal_note",
+        "synthetic"
+      ],
+      "optional": ["human_reviewer", "review_date"],
+      "lists": {},
+      "enums": {"status": "proposal_status"},
+      "refs": {"target": {"kind": "path"}},
+      "body_headings": []
+    },
+    "changelog": {
+      "placement": "changelog/",
+      "required": [
+        "id",
+        "type",
+        "title",
+        "date",
+        "target",
+        "proposal",
+        "approved_by",
+        "synthetic"
+      ],
+      "optional": [],
+      "lists": {},
+      "enums": {},
+      "refs": {
+        "target": {"kind": "path"},
+        "proposal": {"kind": "id", "expect_type": "writeback_proposal"}
+      },
+      "body_headings": ["## Before", "## After"]
+    }
+  }
+}
