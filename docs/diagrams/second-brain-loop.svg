@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1220" role="img" aria-labelledby="loopTitle loopDesc" xml:lang="en">
+  <title id="loopTitle">Second-brain loop</title>
+  <desc id="loopDesc">Manual research loop. Sources flow to the library, the library to the wiki, the wiki to a draft or memo, and the draft to human review. A dashed arrow returns from human review to the wiki only, labeled approved writeback. Raw sources are not rewritten. Journal and changelog are append-only. This starter has no background service.</desc>
+  <rect width="760" height="1220" fill="#fbf8f3"/>
+  <text x="40" y="46" fill="#1c1915" font-family="Georgia, 'Times New Roman', serif" font-size="28">Second-brain loop</text>
+  <text x="40" y="74" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="15">Manual steps in this starter. The dashed return edits the wiki only.</text>
+
+  <defs>
+    <marker id="solid" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#2a2622"/>
+    </marker>
+    <marker id="back" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#8c3a2f"/>
+    </marker>
+  </defs>
+
+  <!-- 1 Sources -->
+  <rect x="40" y="96" width="460" height="132" rx="10" fill="#f0e2cc" stroke="#2a2622" stroke-width="1.5"/>
+  <text x="56" y="124" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700">01</text>
+  <text x="56" y="148" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700">Sources</text>
+  <text x="56" y="174" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Raw stubs. Author, dates, link, and post id.</text>
+  <text x="56" y="196" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">The excerpt stays here. Later steps do not rewrite it.</text>
+  <line x1="270" y1="228" x2="270" y2="262" stroke="#2a2622" stroke-width="1.75" marker-end="url(#solid)"/>
+  <text x="286" y="250" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">file a record</text>
+
+  <!-- 2 Library -->
+  <rect x="40" y="264" width="460" height="176" rx="10" fill="#dde8df" stroke="#2a2622" stroke-width="1.5"/>
+  <text x="56" y="292" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700">02</text>
+  <text x="56" y="316" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700">Library</text>
+  <text x="56" y="344" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Claims, specifics, and provenance from the stub.</text>
+  <text x="56" y="366" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">One record per capture. Dedupe on link or post id.</text>
+  <text x="56" y="392" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Typed relations: supports, contradicts, extends,</text>
+  <text x="56" y="414" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">supersedes, duplicates. Each relation has a note.</text>
+  <line x1="270" y1="440" x2="270" y2="474" stroke="#2a2622" stroke-width="1.75" marker-end="url(#solid)"/>
+  <text x="286" y="462" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">compile</text>
+
+  <!-- 3 Wiki -->
+  <rect x="40" y="476" width="460" height="176" rx="10" fill="#dce8ef" stroke="#2a2622" stroke-width="1.5"/>
+  <text x="56" y="504" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700">03</text>
+  <text x="56" y="528" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700">Wiki</text>
+  <text x="56" y="556" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Principles, theses, companies, sectors.</text>
+  <text x="56" y="578" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Also playbooks and glossary.</text>
+  <text x="56" y="600" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Topic pages change in place only after approval.</text>
+  <text x="56" y="622" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">The journal is append-only and is not this return.</text>
+  <line x1="270" y1="652" x2="270" y2="686" stroke="#2a2622" stroke-width="1.75" marker-end="url(#solid)"/>
+  <text x="286" y="674" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">draft from citations</text>
+
+  <!-- 4 Draft -->
+  <rect x="40" y="688" width="460" height="148" rx="10" fill="#f3ecdf" stroke="#2a2622" stroke-width="1.5"/>
+  <text x="56" y="716" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700">04</text>
+  <text x="56" y="740" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700">Draft / memo</text>
+  <text x="56" y="768" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Memos, digests, and reviews.</text>
+  <text x="56" y="790" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Cite the saved source and the date.</text>
+  <text x="56" y="812" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Label inference. A draft is not a wiki edit.</text>
+  <line x1="270" y1="836" x2="270" y2="870" stroke="#2a2622" stroke-width="1.75" marker-end="url(#solid)"/>
+  <text x="286" y="858" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">you read it</text>
+
+  <!-- 5 Human -->
+  <rect x="40" y="872" width="460" height="148" rx="10" fill="#f6e0d2" stroke="#2a2622" stroke-width="1.5"/>
+  <text x="56" y="900" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700">05</text>
+  <text x="56" y="924" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700">Human review</text>
+  <text x="56" y="952" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Proposal plus feedback. Approve or reject.</text>
+  <text x="56" y="974" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">A person decides. The validator does not.</text>
+  <text x="56" y="996" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Nothing here applies its own writeback.</text>
+
+  <!-- Dashed return, human -> wiki only -->
+  <path d="M500 946 H620 V564 H500" fill="none" stroke="#8c3a2f" stroke-width="2" stroke-dasharray="7 5" marker-end="url(#back)"/>
+  <text x="636" y="730" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700">Approved</text>
+  <text x="636" y="750" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700">writeback</text>
+  <text x="636" y="772" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="13">wiki only</text>
+  <text x="616" y="150" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">Raw sources</text>
+  <text x="616" y="168" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">stay as captured.</text>
+  <text x="616" y="186" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">The return does</text>
+  <text x="616" y="204" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="13">not reach them.</text>
+
+  <rect x="40" y="1048" width="680" height="70" rx="8" fill="#f4efe6" stroke="#e4dccf"/>
+  <text x="56" y="1074" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700">Append-only, beside the loop</text>
+  <text x="56" y="1096" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="13">Add a new journal or changelog file. Do not rewrite an old entry.</text>
+
+  <rect x="40" y="1130" width="680" height="64" rx="8" fill="#24211e"/>
+  <text x="56" y="1154" fill="#f7f3ec" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700">No background service</text>
+  <text x="56" y="1176" fill="#f7f3ec" font-family="Helvetica, Arial, sans-serif" font-size="13">You walk each arrow. No scheduler, and no sync to Notion, X, email, or a broker.</text>
+</svg>

@@ -1,0 +1,14 @@
+# Private working vault. The folder layout is tracked; your notes are not.
+vault/**
+!vault/README.md
+!vault/**/
+!vault/**/.gitkeep
+
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.DS_Store
+*.zip
+dist/

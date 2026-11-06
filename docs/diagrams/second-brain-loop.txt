@@ -1,0 +1,48 @@
+MANUAL RESEARCH LOOP
+This starter has no background service and no autonomous writeback.
+
+Sources
+  raw stubs, with author, dates, link, and post id
+  the excerpt stays here and is not rewritten
+        |
+        | you file one library record for the capture
+        v
+Library
+  claim, specifics, and the other evidence fields
+  provenance copied from the source stub
+  typed relations between records:
+    supports, contradicts, extends, supersedes, duplicates
+        |
+        | you compile
+        v
+Wiki
+  principles, theses, companies, sectors
+  also playbooks and glossary
+  topic pages change in place only after approval
+  the journal is not on this return path; it is append-only
+        |
+        | you draft from citations
+        v
+Draft / memo
+  memos, digests, and reviews
+  each sourced sentence names a saved record and a date
+  inference is labeled as inference
+        |
+        | you read it and leave feedback
+        v
+Human review
+  a proposal you can edit, approve, or reject
+  a person decides; the validator does not
+        |
+        | dashed line: approved writeback
+        v
+Wiki only
+  the approved text replaces the topic page in place
+  raw sources are not rewritten
+  library claim sentences are not rewritten to match the new belief
+  a new changelog file records the before and after
+  a new journal file may record what you decided; the old entry stays
+
+Solid steps are things you do in an editor, or by pasting a prompt
+into an agent you already use. Nothing here runs on a schedule.
+Nothing here syncs Notion, X, email, or a broker.
