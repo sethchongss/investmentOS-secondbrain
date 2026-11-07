@@ -10,6 +10,27 @@ This is not investment advice. Nothing here recommends a security or promises a 
 
 Human review and the before/after changelog are the writeback workflow **in this starter**. They are files you edit. They are not a description of a live system.
 
+## First step: guided onboarding
+
+The first step is not a generic wiki. Copy [prompts/onboard.md](prompts/onboard.md) into an agent you already use. It asks one small batch at a time: institution type (that is not an investment style), whether you invest directly or select funds or both, your seat, and only the questions that follow from those answers. Unknown and skip are complete answers. It does not ask for a firm name, clients, live deals, AUM, holdings, or credentials.
+
+You read the profile back and confirm it. Only then does it belong in `vault/profile/`, which git ignores. A confirmed mandate is operating context for the wiki and the drafts. It is not evidence, not a source, and not advice. If you skip it, or leave it unconfirmed, later prompts stay in generic mode and do not invent a house style.
+
+What the agent does: asks, waits, and drafts markdown after you confirm.
+
+What the script does, offline, with the Python standard library and no network:
+
+```bash
+python3 tools/init_mandate.py init
+python3 tools/init_mandate.py validate vault/profile
+python3 tools/init_mandate.py map vault/profile
+python3 tools/init_mandate.py scaffold vault/profile
+```
+
+`init` copies a blank mandate only when `vault/profile/mandate.md` is absent. `validate` checks fields. `map` names the workflow prompts that fit the answers. `scaffold` writes a wiki starter only when that file is missing. None of them interview you or call a model. A second run does not overwrite a file you already have. A later change to a confirmed mandate is a new dated file under `vault/profile/revisions/`.
+
+Fictional saved profiles, for comparison, are in [examples/profiles](examples/profiles/README.md): a PE direct desk, an SFO that selects funds, a long/short hedge fund, a VC seat that only recommends, a mixed direct-and-fund profile, and an MFO that keeps clients in separate files and names none.
+
 ## The loop
 
 ![Manual loop. Sources flow to the library, then the wiki, then a draft, then human review. A dashed arrow returns only to the wiki and is labeled approved writeback. Raw sources are not rewritten. A footer says this is not a background service.](docs/diagrams/second-brain-loop.svg)
@@ -18,6 +39,7 @@ The drawing is the reusable picture: [docs/diagrams/second-brain-loop.svg](docs/
 
 ```mermaid
 flowchart LR
+  mandate["Mandate: confirmed profile, or generic mode"]
   sources["Sources: raw stubs and provenance"]
   library["Library: claims, evidence, provenance, and typed relations"]
   wiki["Wiki: principles, theses, companies, sectors, playbooks, glossary"]
@@ -28,6 +50,8 @@ flowchart LR
   wiki -->|draft from citations| draft
   draft -->|you read it| human
   human -.->|approved writeback, wiki only| wiki
+  mandate -->|context, not evidence| wiki
+  mandate -->|context, not evidence| draft
 ```
 
 Plain-text fallback, if the picture and the Mermaid block do not render:
@@ -35,6 +59,10 @@ Plain-text fallback, if the picture and the Mermaid block do not render:
 ```text
 MANUAL RESEARCH LOOP
 This starter has no background service and no autonomous writeback.
+
+A confirmed mandate contextualises the wiki and the draft.
+It is not a source and it is not evidence.
+Missing or unconfirmed means generic mode, not a guessed mandate.
 
 Sources
   raw stubs, with author, dates, link, and post id
@@ -89,15 +117,16 @@ You walk each solid arrow in an editor. Longer notes on the same map are in [doc
 
 ## Quickstart
 
-About fifteen minutes, with Python 3.10 or newer and any text editor. There is nothing to install. From the repository root:
+About fifteen minutes, with Python 3.10 or newer and any text editor. There is nothing to install. From the repository root, onboard first if this vault is yours, using the block in [First step](#first-step-guided-onboarding). Then check the shipped examples:
 
 ```bash
+python3 tools/init_mandate.py validate-all
 python3 tools/validate_vault.py examples/low-oriole-metering --example
 python3 -m unittest discover -s tests -v
 python3 tools/quickstart_drill.py
 ```
 
-You should see the example pass, the unit tests pass, and the drill pass. The drill copies the example to a temp folder, drops an unfinished library template onto the copy, checks that the validator names `REPLACE_ME`, removes that file, adds one synthetic journal entry, and checks that the copy passes again. It does not modify the example in the repo.
+You should see the fictional mandates pass, the Low Oriole example pass, the unit tests pass, and the drill pass. The drill copies the example to a temp folder, drops an unfinished library template onto the copy, checks that the validator names `REPLACE_ME`, removes that file, adds one synthetic journal entry, and checks that the copy passes again. It does not modify the example in the repo.
 
 Then read three files:
 
@@ -124,11 +153,13 @@ A recurring principle, "a backlog rate needs a definition," cites three library 
 ## Folder map
 
 ```text
-schema/            field list and relation rules (vault.schema.json)
-templates/         blank records, copied into a vault
-prompts/           paste text for an agent you already use
-docs/              architecture, privacy, publication, integrations
+schema/            vault fields, mandate.schema.json, mandate.md
+templates/         blank records, mandate, and wiki starters
+prompts/onboard.md the interview you paste first
+prompts/workflows/ screening, thesis, PE, managers, IC, monitoring, journal
+docs/              architecture, mandate map, privacy, publication
 docs/diagrams/     SVG and plain-text loop, safe to reuse
+examples/profiles/ fictional mandates (PE, SFO, hedge fund, VC, mixed, MFO)
 examples/low-oriole-metering/
   raw/             source stubs, original wording kept
   library/         one claim record per capture
@@ -137,8 +168,10 @@ examples/low-oriole-metering/
   output/memos/    digests/ reviews/
   proposals/       suggested wiki edits
   changelog/       append-only before/after of an approved edit
+vault/profile/     your mandate (gitignored except the empty layout)
 vault/             your private notes (gitignored except this layout)
 tools/validate_vault.py
+tools/init_mandate.py
 ```
 
 Schemas and templates stay outside the private vault so a published copy of the starter does not have to contain your notes.
@@ -164,7 +197,8 @@ Edit it, replace every `REPLACE_ME`, then `python3 tools/validate_vault.py vault
 
 ## Limitations
 
-- You do the reading. The validator checks shape.
+- You do the reading. The validator checks shape. The mandate script checks profile shape. Neither one decides a deal.
+- A missing or unconfirmed mandate stays generic. The tools will not invent institution, style, or a return target.
 - There is no ingestion pipeline, no scheduler, and no sync to Notion, X, email, or a broker. [docs/integrations.md](docs/integrations.md) is the honest manual list.
 - One library record per capture. A second claim from the same URL belongs in `specifics`, or it is a different capture with its own link.
 - Source excerpts can be copyrighted. The license does not cover them. Keep real excerpts short, in `vault/`, and out of a public commit.

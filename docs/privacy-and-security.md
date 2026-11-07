@@ -6,7 +6,9 @@ This starter stores research as markdown files on disk. It has no accounts, no t
 
 `examples/low-oriole-metering/` is fictional and meant to be readable by anyone who has the repository.
 
-`vault/` is the private working folder. Git is configured to ignore notes there and to keep the folder layout. Ignoring a file is not encryption. `git add -f` will override it. Do not force-add `vault/`.
+`vault/` is the private working folder, including `vault/profile/`. Git is configured to ignore notes there and to keep the folder layout. Ignoring a file is not encryption. `git add -f` will override it. Do not force-add `vault/`.
+
+The mandate interview does not ask for a firm name, clients, deals, AUM, holdings, or credentials. An MFO profile stores no shared client list. Do not add one. The fictional profiles under `examples/profiles/` are the only mandates meant to be published.
 
 If you publish the repository, publish the starter and the example, not a copy of your private vault. Run [publication-checklist.md](publication-checklist.md) first.
 
@@ -18,7 +20,7 @@ If you publish the repository, publish the starter and the example, not a copy o
 
 ## What the tools do
 
-`tools/validate_vault.py` reads markdown and prints errors. It does not phone home, and it does not rewrite files. The prompts do nothing until you paste them into a separate agent. Anything you paste is then in that agent's context. Paste the excerpt you mean to paste, not a folder of unrelated private files.
+`tools/validate_vault.py` reads research markdown and prints errors. It skips `profile/`. `tools/init_mandate.py` reads a mandate and prints errors or a workflow map. It does not phone home, and it does not overwrite a file that already exists. The prompts do nothing until you paste them into a separate agent. Anything you paste is then in that agent's context. Paste the excerpt you mean to paste, not a folder of unrelated private files.
 
 ## Names in the changelog
 

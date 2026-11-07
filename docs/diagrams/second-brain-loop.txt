@@ -1,6 +1,10 @@
 MANUAL RESEARCH LOOP
 This starter has no background service and no autonomous writeback.
 
+A confirmed mandate contextualises the wiki and the draft.
+It is not a source and it is not evidence.
+Missing or unconfirmed means generic mode, not a guessed mandate.
+
 Sources
   raw stubs, with author, dates, link, and post id
   the excerpt stays here and is not rewritten

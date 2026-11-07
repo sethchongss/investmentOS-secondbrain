@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 1220" role="img" aria-labelledby="loopTitle loopDesc" xml:lang="en">
   <title id="loopTitle">Second-brain loop</title>
-  <desc id="loopDesc">Manual research loop. Sources flow to the library, the library to the wiki, the wiki to a draft or memo, and the draft to human review. A dashed arrow returns from human review to the wiki only, labeled approved writeback. Raw sources are not rewritten. Journal and changelog are append-only. This starter has no background service.</desc>
+  <desc id="loopDesc">Manual research loop. A confirmed mandate contextualises the wiki and the draft and is not evidence. Sources flow to the library, the library to the wiki, the wiki to a draft or memo, and the draft to human review. A dashed arrow returns from human review to the wiki only, labeled approved writeback. Raw sources are not rewritten. Journal and changelog are append-only. This starter has no background service.</desc>
   <rect width="760" height="1220" fill="#fbf8f3"/>
   <text x="40" y="46" fill="#1c1915" font-family="Georgia, 'Times New Roman', serif" font-size="28">Second-brain loop</text>
   <text x="40" y="74" fill="#5c564e" font-family="Helvetica, Arial, sans-serif" font-size="15">Manual steps in this starter. The dashed return edits the wiki only.</text>
@@ -40,7 +40,7 @@
   <text x="56" y="504" fill="#8c3a2f" font-family="Helvetica, Arial, sans-serif" font-size="12" font-weight="700">03</text>
   <text x="56" y="528" fill="#1c1915" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="700">Wiki</text>
   <text x="56" y="556" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Principles, theses, companies, sectors.</text>
-  <text x="56" y="578" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Also playbooks and glossary.</text>
+  <text x="56" y="578" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Mandate contextualises this page. It is not evidence.</text>
   <text x="56" y="600" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">Topic pages change in place only after approval.</text>
   <text x="56" y="622" fill="#3a342c" font-family="Helvetica, Arial, sans-serif" font-size="15">The journal is append-only and is not this return.</text>
   <line x1="270" y1="652" x2="270" y2="686" stroke="#2a2622" stroke-width="1.75" marker-end="url(#solid)"/>
