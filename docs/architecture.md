@@ -10,6 +10,7 @@ The same loop in Mermaid, for hosts that render it:
 
 ```mermaid
 flowchart LR
+  mandate["Mandate: confirmed profile, or generic mode"]
   sources["Sources: raw stubs and provenance"]
   library["Library: claims, evidence, provenance, and typed relations"]
   wiki["Wiki: principles, theses, companies, sectors, playbooks, glossary"]
@@ -20,6 +21,8 @@ flowchart LR
   wiki -->|draft from citations| draft
   draft -->|you read it| human
   human -.->|approved writeback, wiki only| wiki
+  mandate -->|context, not evidence| wiki
+  mandate -->|context, not evidence| draft
 ```
 
 Plain-text fallback:
@@ -27,6 +30,10 @@ Plain-text fallback:
 ```text
 MANUAL RESEARCH LOOP
 This starter has no background service and no autonomous writeback.
+
+A confirmed mandate contextualises the wiki and the draft.
+It is not a source and it is not evidence.
+Missing or unconfirmed means generic mode, not a guessed mandate.
 
 Sources
   raw stubs, with author, dates, link, and post id
@@ -76,6 +83,10 @@ Nothing here syncs Notion, X, email, or a broker.
 ```
 
 The drawing file is [diagrams/second-brain-loop.svg](diagrams/second-brain-loop.svg). [diagrams/second-brain-loop.txt](diagrams/second-brain-loop.txt) is the same fallback. Reuse those two if you want the picture outside this repository. They do not call a service.
+
+## Mandate
+
+A confirmed file at `vault/profile/mandate.md` contextualises the wiki and the draft. It is operating context. It is not a source, not evidence, and not advice. Strategy rules live in separate files under `vault/profile/strategies/` so a direct PE checklist is not the same text as a fund-selection checklist. Missing or unconfirmed means generic mode. The interview is [prompts/onboard.md](../prompts/onboard.md). The offline checker is `tools/init_mandate.py`. The map of answers to prompts is [mandate-map.md](mandate-map.md).
 
 ## What moves forward
 

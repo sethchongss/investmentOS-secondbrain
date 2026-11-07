@@ -1,6 +1,6 @@
 # Schema
 
-`vault.schema.json` is the field list the validator loads. This page is the same contract in prose. Dates are `YYYY-MM-DD`. `synthetic` is a boolean. Ids are lowercase letters, digits, and hyphens. `conviction` is an integer from 1 to 5.
+`vault.schema.json` is the field list the research-vault validator loads. A mandate is a different file, checked by `tools/init_mandate.py` against [mandate.schema.json](mandate.schema.json) and described in [mandate.md](mandate.md). `tools/validate_vault.py` skips `profile/` so a private mandate is not mistaken for a source. This page is the research contract in prose. Dates are `YYYY-MM-DD`. `synthetic` is a boolean. Ids are lowercase letters, digits, and hyphens. `conviction` is an integer from 1 to 5.
 
 Paths in frontmatter are relative to the vault root (`raw/note.md`, not `../raw/note.md`). Paths in the markdown body are normal relative links.
 

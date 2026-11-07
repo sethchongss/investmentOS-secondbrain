@@ -4,7 +4,25 @@ This folder is yours. The example under `examples/low-oriole-metering/` is the s
 
 Git ignores markdown you add under this tree and keeps the directory layout. That is not a lock. Do not `git add -f` these notes. Do not put material nonpublic information, account numbers, or secrets here if this repository might ever be published. See `docs/privacy-and-security.md`.
 
-## Start
+## Mandate first
+
+Your investment mandate is operating context, not a source. Git ignores it with the rest of this tree.
+
+```bash
+python3 tools/init_mandate.py init
+```
+
+That copies `templates/mandate/mandate.md` only if `vault/profile/mandate.md` is absent. Fill it by pasting `prompts/onboard.md` into an agent you already use, then:
+
+```bash
+python3 tools/init_mandate.py validate vault/profile
+python3 tools/init_mandate.py map vault/profile
+python3 tools/init_mandate.py scaffold vault/profile
+```
+
+Do not put a real firm name, client list, deal, AUM, holding, or credential in the profile. Unknown and skipped are valid. An MFO does not get a shared client file. If the mandate is missing or unconfirmed, prompts stay generic.
+
+## Research notes
 
 From the repository root:
 

@@ -2,7 +2,9 @@
 
 Use this before you put the starter in a public repository. The files in this workspace are a project you can publish. Publishing is a separate step you do yourself.
 
+- [ ] `python3 tools/init_mandate.py validate-all` passes.
 - [ ] `python3 tools/validate_vault.py examples/low-oriole-metering --example` passes.
+- [ ] `examples/profiles/` is still fictional. A real mandate stays in `vault/profile/` and out of the commit.
 - [ ] `python3 -m unittest discover -s tests -v` passes.
 - [ ] `vault/` has no notes in the commit. `git status` does not list private markdown. Do not `git add -f` that folder.
 - [ ] The example is still labeled synthetic, or you removed it. It has no `http://` or `https://` links and no real citation dressed up as a source.

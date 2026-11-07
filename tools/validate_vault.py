@@ -261,7 +261,8 @@ def validate_vault(vault: Path, schema: dict, example: bool = False) -> Report:
 
     for absolute in markdown_files:
         rel = absolute.relative_to(vault).as_posix()
-        if rel == "README.md":
+        if rel == "README.md" or rel.startswith("profile/"):
+            # profile/ is an operating mandate, checked by tools/init_mandate.py.
             if example and re.search(r"https?://", absolute.read_text(encoding="utf-8"), re.I):
                 report.issues.append(Issue(rel, "example vault must not contain http:// or https://"))
             continue

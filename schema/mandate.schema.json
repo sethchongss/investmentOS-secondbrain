@@ -1,0 +1,246 @@
+{
+  "version": 1,
+  "id_pattern": "^[a-z0-9][a-z0-9-]*$",
+  "required_sentence": "This is operating context, not evidence and not advice.",
+  "forbidden_keys": [
+    "firm_name",
+    "legal_name",
+    "client_name",
+    "client_names",
+    "aum",
+    "holdings",
+    "credentials",
+    "account",
+    "api_key"
+  ],
+  "enums": {
+    "institution_types": ["sfo", "mfo", "vc", "pe", "hedge_fund", "independent", "other", "unknown", "skipped"],
+    "activities": ["direct", "fund_selection", "both", "unknown", "skipped"],
+    "roles": ["research", "associate", "principal", "partner", "portfolio_manager", "cio", "ic_member", "advisor", "allocator", "other", "unknown", "skipped"],
+    "authorities": ["recommend_only", "vote", "decide", "unknown", "skipped"],
+    "objectives": ["capital_preservation", "growth", "income", "diversification", "learning", "other", "unknown", "skipped"],
+    "asset_classes": ["public_equity", "private_equity", "venture", "credit", "real_assets", "hedge_funds", "cash", "multi_asset", "other", "unknown", "skipped"],
+    "holding_periods": ["days", "months", "one_to_three_years", "three_to_seven_years", "seven_years_plus", "open_ended", "mixed", "unknown", "skipped"],
+    "liquidity": ["daily", "monthly", "quarterly", "annual", "locked", "mixed", "unknown", "skipped"],
+    "leverage": ["none", "limited", "permitted", "unknown", "skipped"],
+    "return_objectives": ["not_stated", "skipped", "user_stated"],
+    "cadence": ["ad_hoc", "weekly", "monthly", "quarterly", "unknown", "skipped"],
+    "confidentiality": ["public_ok", "internal", "mnpi_fence", "unknown", "skipped"],
+    "client_separation": ["separate_files", "not_applicable", "unknown"],
+    "data_sources": ["filings", "company_calls", "manager_reports", "internal_notes", "news", "other", "unknown", "skipped"],
+    "output_formats": ["screening", "thesis", "pe_diligence", "fund_diligence", "ic_memo", "monitoring", "decision_journal", "unknown", "skipped"],
+    "status": ["draft", "confirmed"],
+    "evidence_rule": ["cite_sources"],
+    "human_approval": ["required"],
+    "strategy_kinds": ["vc", "pe", "hedge_fund", "fund_selection", "direct_public", "credit", "real_assets", "other"],
+    "vc_stages": ["pre_seed", "seed", "series_a", "series_b_plus", "growth", "mixed", "unknown", "skipped"],
+    "ownership": ["control", "minority", "both", "not_applicable", "unknown", "skipped"],
+    "pe_deal_types": ["buyout", "growth", "minority", "both", "not_buyout", "unknown", "skipped"],
+    "follow_on": ["reserves", "no_reserves", "unknown", "skipped"],
+    "hf_styles": ["long_short_equity", "long_only", "macro", "event", "credit", "multi", "other", "unknown", "skipped"],
+    "scope_answer": ["in_scope", "unknown", "skipped"]
+  },
+  "direct_kinds": ["vc", "pe", "hedge_fund", "direct_public", "credit", "real_assets", "other"],
+  "mandate_required": [
+    "id",
+    "type",
+    "title",
+    "status",
+    "revision",
+    "confirmed_on",
+    "confirmed_by",
+    "institution_types",
+    "activity",
+    "role",
+    "decision_authority",
+    "objectives",
+    "asset_classes",
+    "geography",
+    "sectors",
+    "size_range",
+    "holding_period",
+    "liquidity",
+    "leverage",
+    "concentration",
+    "return_objective",
+    "evidence_rule",
+    "data_sources",
+    "output_formats",
+    "ic_cadence",
+    "confidentiality",
+    "human_approval",
+    "client_separation",
+    "strategies",
+    "synthetic",
+    "operating_context"
+  ],
+  "mandate_optional": ["return_objective_words", "prior_revision"],
+  "mandate_lists": {
+    "institution_types": "institution_types",
+    "objectives": "objectives",
+    "asset_classes": "asset_classes",
+    "data_sources": "data_sources",
+    "output_formats": "output_formats",
+    "strategies": null
+  },
+  "mandate_enums": {
+    "status": "status",
+    "activity": "activities",
+    "role": "roles",
+    "decision_authority": "authorities",
+    "holding_period": "holding_periods",
+    "liquidity": "liquidity",
+    "leverage": "leverage",
+    "return_objective": "return_objectives",
+    "evidence_rule": "evidence_rule",
+    "ic_cadence": "cadence",
+    "confidentiality": "confidentiality",
+    "human_approval": "human_approval",
+    "client_separation": "client_separation"
+  },
+  "strategy_common": ["id", "type", "title", "strategy_kind", "mandate", "synthetic"],
+  "strategy_fields": {
+    "vc": {
+      "stage": "vc_stages",
+      "ownership": "ownership",
+      "follow_on": "follow_on",
+      "unit_economics": "text"
+    },
+    "pe": {
+      "ownership": "ownership",
+      "deal_type": "pe_deal_types",
+      "value_creation": "text",
+      "earnings_quality": "scope_answer",
+      "cash_debt": "text",
+      "downside": "text"
+    },
+    "hedge_fund": {
+      "hf_style": "hf_styles",
+      "holding_period": "holding_periods",
+      "exposure": "text",
+      "liquidity": "liquidity",
+      "catalysts": "text",
+      "risk": "text"
+    },
+    "fund_selection": {
+      "gp_strategy": "scope_answer",
+      "gp_team": "scope_answer",
+      "attribution": "scope_answer",
+      "terms": "scope_answer",
+      "repeatability": "scope_answer"
+    },
+    "direct_public": {
+      "focus": "text",
+      "holding_period": "holding_periods"
+    },
+    "credit": {
+      "focus": "text",
+      "downside": "text"
+    },
+    "real_assets": {
+      "focus": "text",
+      "holding_period": "holding_periods"
+    },
+    "other": {
+      "focus": "text"
+    }
+  },
+  "emphasis": {
+    "pe": {
+      "asks": "control or minority as stated, buyout or growth as stated, earnings quality, cash, debt, and downside",
+      "does_not_ask": "seed follow-on reserves or a GP's fund terms",
+      "monitor": "cash, debt, and whether the stated value-creation plan happened",
+      "counterthesis": "earnings quality or debt service, not a different multiple on the same story"
+    },
+    "vc": {
+      "asks": "stage, ownership, follow-on, and unit economics",
+      "does_not_ask": "buyout debt or a manager's carry",
+      "monitor": "follow-on reserve and whether unit economics moved since the last source",
+      "counterthesis": "the next round needs follow-on the reserve does not cover, or unit economics that do not support it"
+    },
+    "hedge_fund": {
+      "asks": "style, holding period, exposures, liquidity, catalysts, and what would falsify the book",
+      "does_not_ask": "control buyout covenants or GP fundraising terms",
+      "monitor": "exposures and liquidity as stated in a source, plus the catalyst clock",
+      "counterthesis": "the other side of the exposure, or a catalyst that misses its clock"
+    },
+    "fund_selection": {
+      "asks": "GP strategy, team, attribution, terms, and repeatability",
+      "does_not_ask": "portfolio-company debt or venture unit economics unless a separate direct subprofile is the file you opened",
+      "monitor": "manager reports, team changes, and terms, not the manager's underlying companies",
+      "counterthesis": "attribution that is beta, or terms that take the stated edge"
+    },
+    "direct_public": {
+      "asks": "the stated security, the stated horizon, and the constraint check",
+      "does_not_ask": "private control covenants or GP fund terms",
+      "monitor": "the stated horizon and whether a new source breaks the reason",
+      "counterthesis": "the reason the security was filed, tested against a source that disagrees"
+    },
+    "credit": {
+      "asks": "the stated claim on cash, downside, and what is skipped",
+      "does_not_ask": "equity follow-on reserves or a long-short catalyst clock",
+      "monitor": "covenants and cash only when a source states them",
+      "counterthesis": "cash or priority that the thesis treats as safe"
+    },
+    "real_assets": {
+      "asks": "the stated asset, the hold, and liquidity",
+      "does_not_ask": "a hedge-fund book or a GP track record unless that subprofile is loaded",
+      "monitor": "the hold and liquidity against the last source",
+      "counterthesis": "liquidity or duration that the thesis ignores"
+    },
+    "other": {
+      "asks": "only the focus written on this subprofile",
+      "does_not_ask": "PE, VC, hedge-fund, or GP checklists that belong to another subprofile",
+      "monitor": "whatever the focus names, and nothing borrowed from another strategy",
+      "counterthesis": "a mechanism that contradicts the focus, not a generic risk paragraph"
+    }
+  },
+  "workflow_order": [
+    "screening",
+    "thesis",
+    "pe_diligence",
+    "fund_diligence",
+    "monitoring",
+    "ic_memo",
+    "decision_journal"
+  ],
+  "workflows": {
+    "screening": {
+      "prompt": "prompts/workflows/screening.md",
+      "starter": "templates/wiki-starters/screening.md",
+      "per_strategy": true
+    },
+    "thesis": {
+      "prompt": "prompts/workflows/thesis-counterthesis.md",
+      "starter": "templates/wiki-starters/thesis.md",
+      "per_strategy": true
+    },
+    "pe_diligence": {
+      "prompt": "prompts/workflows/pe-diligence.md",
+      "starter": "templates/wiki-starters/pe-diligence.md",
+      "per_strategy": true,
+      "kinds": ["pe"]
+    },
+    "fund_diligence": {
+      "prompt": "prompts/workflows/fund-manager-diligence.md",
+      "starter": "templates/wiki-starters/fund-diligence.md",
+      "per_strategy": true,
+      "kinds": ["fund_selection"]
+    },
+    "monitoring": {
+      "prompt": "prompts/workflows/portfolio-monitoring.md",
+      "starter": "templates/wiki-starters/monitoring.md",
+      "per_strategy": true
+    },
+    "ic_memo": {
+      "prompt": "prompts/workflows/ic-memo.md",
+      "starter": "templates/wiki-starters/ic-memo.md",
+      "per_strategy": false
+    },
+    "decision_journal": {
+      "prompt": "prompts/workflows/decision-journal.md",
+      "starter": "templates/wiki-starters/decision-journal.md",
+      "per_strategy": false
+    }
+  }
+}

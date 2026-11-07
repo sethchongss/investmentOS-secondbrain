@@ -14,6 +14,8 @@ jobs:
           python-version: "3.12"
       - name: Unit tests
         run: python3 -m unittest discover -s tests -v
+      - name: Example mandates
+        run: python3 tools/init_mandate.py validate-all
       - name: Example vault
         run: python3 tools/validate_vault.py examples/low-oriole-metering --example
       - name: Quickstart drill

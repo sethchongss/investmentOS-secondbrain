@@ -18,8 +18,8 @@ Do not expect this repository to import a Notion database, a timeline, or an inb
 
 ## An agent you already run
 
-Paste one file from `prompts/` and the templates it names. Attach only the vault files the task needs. Review the draft. Move an approved wiki change yourself, then add the changelog file. The agent does not get a writeback tool from this repository, because this repository does not include one.
+Paste `prompts/onboard.md` first if you want the vault to follow your seat. The agent asks and drafts. You save the files. Then paste a later file from `prompts/` or `prompts/workflows/` with the mandate and the templates it names. Attach only the vault files the task needs. Review the draft. Move an approved wiki change yourself, then add the changelog file. The agent does not get a writeback tool from this repository, because this repository does not include one. `tools/init_mandate.py` checks local markdown. It does not call the agent.
 
 ## What would be a false claim
 
-Do not add a README badge, a workflow, or a script that implies Notion sync, X sync, automatic ingestion, or an always-on agent. The CI workflow runs the unit tests and the validator. That is all it does.
+Do not add a README badge, a workflow, or a script that implies Notion sync, X sync, automatic ingestion, or an always-on agent. The CI workflow runs the unit tests, the research-vault validator, and the fictional mandate checks. That is all it does.
